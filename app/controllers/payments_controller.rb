@@ -3,7 +3,7 @@ class PaymentsController < ApplicationController
     render json: Payment.all
   end
   def create
-    #payment=Payment.new(amount:params(:amount),description:params(:'description'))
+    #payment=Payment.new(amount:params[:amount],description:params[:'description'])
     payment=Payment.new(payment_params)
     if payment.save
       render json:payment, status: :created
