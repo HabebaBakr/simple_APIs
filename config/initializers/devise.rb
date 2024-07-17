@@ -312,9 +312,9 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
   Devise.setup do |config|
     # other devise configurations
-  
+
     config.jwt do |jwt|
-      jwt.secret = Rails.application.credentials.devise_jwt_secret_key!
+      jwt.secret = 'sadakshdgajshdvbmeve@,mansd,absdmnasd b6832486q@kjgahgsd'
       jwt.dispatch_requests = [
         ['POST', %r{^/login$}]
       ]
@@ -324,5 +324,6 @@ Devise.setup do |config|
       jwt.expiration_time = 1.day.to_i
     end
   end
-  
+
+  config.skip_session_storage = %i[http_auth token_auth]
 end
