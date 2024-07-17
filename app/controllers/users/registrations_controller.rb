@@ -1,6 +1,29 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  respond_to :json
+
+  private
+
+  def respond_with(resource, _opts = {})
+  if resource.persisted?
+    register_success
+  else
+    register_failed(resource)
+  end
+  end
+
+  def register_success
+    render json: { message: 'Signed up successfully.' }
+  end
+
+  def register_failed(resource)
+    render json: { message: 'Registration failed', errors: resource.errors.full_messages }, status: :unprocessable_entity
+  end
+  def sign_up_params
+    params.require(:user).permit(:email, :password, :password_confirmation)
+  end
+
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
