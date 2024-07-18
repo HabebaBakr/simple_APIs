@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 class Payment < ApplicationRecord
-    belongs_to :author
+    belongs_to :user
 end

@@ -2,7 +2,7 @@
 
 class PaymentsController < ApplicationController
   def index
-    render json: Payment.all
+    render json: current_user.payment.all
   end
 
   def create
@@ -10,7 +10,7 @@ class PaymentsController < ApplicationController
 
     # payment=Payment.new(amount:params[:amount],description:params[:'description'])
     @user = User.find(params[:user_id]) 
-    payment = @user.payments.build(payment_params)
+    payment = @user.payments.new(payment_params)
     if payment.save
       render json: payment, status: :created
 
