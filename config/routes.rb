@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     confirmations: 'users/confirmations',
     unlocks: 'users/unlocks'
   }
-
+  resources :users, only: [:show] do
   # get 'payments/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

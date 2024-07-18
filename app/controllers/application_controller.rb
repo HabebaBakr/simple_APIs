@@ -2,6 +2,10 @@
 
 class ApplicationController < ActionController::API
   before_action :configure_permitted_parameters, if: :devise_controller?
+  def show
+    @user = User.find(params[:id])
+    payments = @user.payments
+  end
 
   protected
 
